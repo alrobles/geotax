@@ -5,7 +5,6 @@ Version: 0.1.0
 Author: Angel Luis Robles Fernandez
 Maintainer: Angel Luis Robles Fernandez <a.l.robles.fernandez@gmail.com>
 Description: This packages is a set of tools to transfer phylogenetic information to geographical space.
-    Use four spaces when indenting paragraphs within the Description.
 License: GPL-2
 Imports:
     raster,
