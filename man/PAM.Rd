@@ -13,10 +13,13 @@ PAM(shp, points, res)
 
 \item{res}{A resolution vector of the null raster in geographical degrees}
 }
+\value{
+A tibble fill with ones and zeros, column names of species and
+rows of sites with coordinates
+}
 \description{
 Create a Presence Absence Matrix
 }
 \examples{
-PAM(shp = world, points = host_points, res = 3)
+PAM(shp = mexico, points = host_points_mexico, res = 3)
 }
-

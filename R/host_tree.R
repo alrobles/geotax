@@ -1,20 +1,10 @@
-#' tree_host pylogenetic tree on geotax
+#' Pylogenetic tree example on geotax.
 #'
-#' Host phylogenetic tree with branch lengths in My.
-#' It was calculated using phylomatic.
+#' Is a phylogenetic tree with 235 genus of potential host trees
+#' of bark beetles. Was construct with phylomatic. Was generated with
+#' phylomatic
 #'
 #' @docType data
-#'
-#' @usage data(host_tree)
-#'
 #' @format An object of class \code{"phylo"}
-#'
-#' @keywords datasets
-#'
-#' @references
-#'
-#' @examples
-#' data(host_tree)
-#' dist_matrix <- ape::cophenetic.phylo(host_tree)
-#'
+#' @source \url{https://phylodiversity.net/phylomatic/}
 "host_tree"

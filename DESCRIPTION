@@ -1,0 +1,25 @@
+Package: geotax
+Type: Package
+Title: Tools for exploring taxonomical distance over the geographical space
+Version: 0.1.0
+Author: Angel Luis Robles Fernandez
+Maintainer: Angel Luis Robles Fernandez <a.l.robles.fernandez@gmail.com>
+Description: This is a set of tools to model the probability that two potential
+    host (or other clases of interactions) share a pathogen given a phylogenetyc 
+    or taxonomical distance.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
+Imports: 
+    ape,
+    dplyr,
+    magrittr,
+    raster,
+    rlang,
+    sp,
+    stats,
+    tibble,
+    tidyr
+Depends: 
+    R (>= 2.10)

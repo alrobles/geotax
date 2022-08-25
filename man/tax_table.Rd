@@ -3,22 +3,25 @@
 \docType{data}
 \name{tax_table}
 \alias{tax_table}
-\title{tax_table taxonomical host data on geotax}
-\format{An object of class \code{data.frame} with 565 rows and 5 columns.}
+\title{Taxonomical host data on geotax}
+\format{
+A data frame with 3254 rows and 3 variables:
+\describe{
+  \item{class}{class of tree host of bark beetle}
+  \item{order}{order of tree host of bark beetle}
+  \item{family}{family of tree host of bark beetle}
+  \item{genus}{genus of tree host of bark beetle}
+  \item{species}{species of tree host of bark beetle}
+}
+}
 \source{
-\href{http://barkbeetles.info/about.php}{web page}
+\url{https://www.barkbeetles.info/}
 }
 \usage{
-data(tax_table)
+tax_table
 }
 \description{
-Data of taxonomic hierarchy from bark beetles host to build a host taxonomic tree
-}
-\examples{
-data(tax_table)
-}
-\references{
-Athkinson Thomas.
+Data of taxonomic hierarchy from bark beetles host to build
+a taxonomic cladogram from presence points of bark beetles.
 }
 \keyword{datasets}
-

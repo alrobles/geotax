@@ -11,10 +11,12 @@ null_raster_point(shp, res)
 
 \item{res}{A resolution vector of the null raster in geographical degrees}
 }
+\value{
+a data frame of null points
+}
 \description{
 Create a point matrix from from a shape file with an arbitrary resolution
 }
 \examples{
-null_raster_point(shp = world, res = 1)
+null_raster_point(shp = mexico, res = 1)
 }
-

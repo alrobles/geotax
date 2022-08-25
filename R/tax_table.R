@@ -1,17 +1,15 @@
-#' tax_table taxonomical host data on geotax
+#' Taxonomical host data on geotax
 #'
-#' Data of taxonomic hierarchy from bark beetles host to build a host taxonomic tree
+#' Data of taxonomic hierarchy from bark beetles host to build
+#' a taxonomic cladogram from presence points of bark beetles.
 #'
-#' @docType data
-#'
-#' @usage data(tax_table)
-#'
-#' @keywords datasets
-#'
-#' @references Athkinson Thomas.
-#'
-#' @source \href{http://barkbeetles.info/about.php}{web page}
-#'
-#' @examples
-#' data(tax_table)
+#' @format A data frame with 3254 rows and 3 variables:
+#' \describe{
+#'   \item{class}{class of tree host of bark beetle}
+#'   \item{order}{order of tree host of bark beetle}
+#'   \item{family}{family of tree host of bark beetle}
+#'   \item{genus}{genus of tree host of bark beetle}
+#'   \item{species}{species of tree host of bark beetle}
+#' }
+#' @source \url{https://www.barkbeetles.info/}
 "tax_table"

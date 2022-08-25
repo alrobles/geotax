@@ -3,22 +3,19 @@
 \docType{data}
 \name{host_tree}
 \alias{host_tree}
-\title{tree_host pylogenetic tree on geotax}
-\format{An object of class \code{"phylo"}}
+\title{Pylogenetic tree example on geotax.}
+\format{
+An object of class \code{"phylo"}
+}
+\source{
+\url{https://phylodiversity.net/phylomatic/}
+}
 \usage{
-data(host_tree)
+host_tree
 }
 \description{
-Host phylogenetic tree with branch lengths in My.
-It was calculated using phylomatic.
-}
-\examples{
-data(host_tree)
-dist_matrix <- ape::cophenetic.phylo(host_tree)
-
-}
-\references{
-
+Is a phylogenetic tree with 235 genus of potential host trees
+of bark beetles. Was construct with phylomatic. Was generated with
+phylomatic
 }
 \keyword{datasets}
-

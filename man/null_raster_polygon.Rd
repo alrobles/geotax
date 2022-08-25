@@ -2,7 +2,8 @@
 % Please edit documentation in R/null_raster_polygon.R
 \name{null_raster_polygon}
 \alias{null_raster_polygon}
-\title{Create a Spatial polygon Data Set from a shape file with an arbitrary resolution}
+\title{Create a Spatial polygon Data Set from a shape file
+with an arbitrary resolution}
 \usage{
 null_raster_polygon(shp, res)
 }
@@ -11,10 +12,13 @@ null_raster_polygon(shp, res)
 
 \item{res}{A resolution vector of the null raster in geographical degrees}
 }
+\value{
+a null polygon
+}
 \description{
-Create a Spatial polygon Data Set from a shape file with an arbitrary resolution
+Create a Spatial polygon Data Set from a shape file
+with an arbitrary resolution
 }
 \examples{
-null_raster_polygon(shp = world, res = 1)
+null_raster_polygon(shp = mexico, res = 1)
 }
-
