@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# geotax
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This packages aims to model the probability that two host share a pathogen
+given a phylogenetic (or taxonomic) distance. Please link to the original
+[paper](https://doi.org/10.3389/fams.2017.00017)
+
+
+
+## Installation
+
+You can install the development version of geotax from [GitHub](https://github.com/alrobles/geotax) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("alrobles/geotax")
+```
+
+## Examples
+
+geotax comes with basic tools. For example compute a taxonomic tree from a 
+table with taxonomic ranks. In this example we load a taxonomic tree of species
+that has been record with bark beetles. We use the table provide in the paper.
+
+We can also plot this tree  and explore the distance matrix with the help of ape package
+
+
+```{r example}
+library(geotax)
+library(dplyr) ## this is for clean the data if need it
+data("tax_table")
+clean_tree <- distinct(tax_table)
+
+# clean the data
+taxonomic_tree <- geotax::get_taxonomical_tree(clean_tree, power = 1)
+plot(taxonomic_tree, type = "radial", show.tip.label = FALSE)
+ape::cophenetic.phylo(taxonomic_tree)[1:5, 1:5]
+```
+
