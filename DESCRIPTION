@@ -1,12 +1,12 @@
 Package: geotax
 Type: Package
-Title: Tools for exploring taxonomical distance over the geographical space
+Title: Tools for exploring taxonomic distance over the geographical space
 Version: 0.1.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
 Description: This is a set of tools to model the probability that two potential
-    host (or other clases of interactions) share a pathogen given a phylogenetyc 
+    host (or other classes of interactions) share a pathogen given a phylogenetic 
     or taxonomical distance.
 License: MIT + file LICENSE
 Encoding: UTF-8
