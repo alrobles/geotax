@@ -1,18 +1,18 @@
-#' Create a Spatial polygon Data Set from a shape file
-#' with an arbitrary resolution
+#' Create a Spatial Polygon Data Set from a shape file
 #'
-#' @param shp A shape file
-#' @param res A resolution vector of the null raster in geographical degrees
-#' @importFrom raster raster res rasterToPolygons crop
+#' @description Deprecated. Use \code{\link{make_null_raster_polygons}} instead.
 #'
-#' @return a null polygon
+#' @param shp A shape file.
+#' @param res Resolution in geographical degrees.
+#'
+#' @return A SpatialPolygonsDataFrame.
+#' @importFrom raster raster res crop rasterToPolygons
 #' @export
-#'
-#' @examples null_raster_polygon(shp = mexico, res = 1)
-null_raster_polygon <- function(shp, res){
-  x <- raster::raster()
-  raster::res(x) <- c(res, res)
-  xcrop <- raster::crop(x, shp)
-  xpolygon <- raster::rasterToPolygons(xcrop)
-  return(xpolygon)
+#' @examples
+#' \dontrun{
+#' null_raster_polygon(shp = mexico, res = 1)
+#' }
+null_raster_polygon <- function(shp, res) {
+  .Deprecated("make_null_raster_polygons")
+  make_null_raster_polygons(shp = shp, res = res)
 }

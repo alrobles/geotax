@@ -2,33 +2,27 @@
 % Please edit documentation in R/log_reg_boostrap.R
 \name{log_reg_boostrap}
 \alias{log_reg_boostrap}
-\title{Logistic regression coeficients.
-Calculates the coefficients of a logistic regression.
-As input use an incidence matrix of host - parasite interaction
-and a phylogenetical distance matrix of host.
-It replicates the calculation of the coefficients 1000 times
-and gets the central tendency of the distribution of each coefficient.}
+\title{Bootstrap logistic regression coefficients}
 \usage{
 log_reg_boostrap(incidence, phydist, n)
 }
 \arguments{
-\item{incidence}{Incidence binary matrix between pest - host interaction}
+\item{incidence}{Incidence binary matrix.}
 
-\item{phydist}{Phylogenetic host distance matrix}
+\item{phydist}{Phylogenetic distance matrix.}
 
-\item{n}{Number of boostrap iteration}
+\item{n}{Number of bootstrap iterations.}
+}
+\value{
+A named numeric vector of mean coefficients (old format).
 }
 \description{
-Logistic regression coeficients.
-Calculates the coefficients of a logistic regression.
-As input use an incidence matrix of host - parasite interaction
-and a phylogenetical distance matrix of host.
-It replicates the calculation of the coefficients 1000 times
-and gets the central tendency of the distribution of each coefficient.
+Deprecated. Use \code{\link{bootstrap_geotax_model}} instead.
 }
 \examples{
-phy_dist <- ape::cophenetic.phylo(host_tree)
-incidence_matrix <-  get_incidence_matrix(beetleTreeInteractions)
-incidence_matrix <- incidence_matrix[ , colnames(phy_dist)]
+\dontrun{
+incidence_matrix <- get_incidence_matrix(beetleTreeInteractions)
+incidence_matrix <- incidence_matrix[, colnames(phy_dist)]
 log_reg_boostrap(incidence_matrix, phy_dist, 10)
+}
 }

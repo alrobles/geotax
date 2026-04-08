@@ -2,27 +2,23 @@
 % Please edit documentation in R/get_incidence_matrix.R
 \name{get_incidence_matrix}
 \alias{get_incidence_matrix}
-\title{Generate an incidence matrix from a interaction table}
+\title{Generate an incidence matrix from an interaction table}
 \usage{
 get_incidence_matrix(db, returnDataFrame = FALSE)
 }
 \arguments{
-\item{db}{A data.frame or matrix with two columns,
-for example host and parasites}
+\item{db}{A data.frame with two columns.}
 
-\item{returnDataFrame}{Logical, by default if FALSE and the function
-returns a Matrix}
+\item{returnDataFrame}{Logical. If TRUE returns a tibble. Default FALSE.}
 }
 \value{
-An incidence matrix or data.frame (tibble) with rows of one
-kind (for example host) and columns with the other (for example parasites)
-filled with ones and zeros.
+An incidence matrix or tibble.
 }
 \description{
-This function creates an incidence matrix
+Deprecated. Use \code{\link{prepare_incidence_matrix}} instead.
 }
 \examples{
+\dontrun{
 get_incidence_matrix(beetleTreeInteractions)
-get_incidence_matrix(beetleTreeInteractions,
-returnDataFrame = TRUE)
+}
 }
