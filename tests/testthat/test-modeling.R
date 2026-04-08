@@ -1,25 +1,3 @@
-# Fixtures shared across tests
-make_simple_incidence <- function() {
-  m <- matrix(
-    c(1, 0, 1,
-      0, 1, 1),
-    nrow = 2, byrow = TRUE,
-    dimnames = list(c("parasite1", "parasite2"), c("host1", "host2", "host3"))
-  )
-  m
-}
-
-make_simple_phydist <- function() {
-  m <- matrix(
-    c(0, 1, 2,
-      1, 0, 1,
-      2, 1, 0),
-    nrow = 3,
-    dimnames = list(c("host1", "host2", "host3"), c("host1", "host2", "host3"))
-  )
-  m
-}
-
 test_that("fit_geotax_model returns a geotax_model object", {
   inc <- make_simple_incidence()
   phy <- make_simple_phydist()
