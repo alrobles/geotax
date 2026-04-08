@@ -44,13 +44,13 @@ test_that("log_reg_coef emits deprecation warning", {
   expect_warning(log_reg_coef(inc, phy), "fit_geotax_model")
 })
 
-test_that("log_reg_boostrap emits deprecation warning", {
+test_that("log_reg_bootstrap emits deprecation warning", {
   inc <- make_simple_incidence()
   phy <- make_simple_phydist()
   expect_warning(log_reg_boostrap(inc, phy, 3), "bootstrap_geotax_model")
 })
 
-test_that("log_reg_boostrap still returns a named vector", {
+test_that("log_reg_bootstrap (legacy) still returns a named vector", {
   inc <- make_simple_incidence()
   phy <- make_simple_phydist()
   suppressWarnings({
