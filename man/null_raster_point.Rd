@@ -2,21 +2,23 @@
 % Please edit documentation in R/null_raster_point.R
 \name{null_raster_point}
 \alias{null_raster_point}
-\title{Create a point matrix from from a shape file with an arbitrary resolution}
+\title{Create a point matrix from a shape file with an arbitrary resolution}
 \usage{
 null_raster_point(shp, res)
 }
 \arguments{
-\item{shp}{A shape file}
+\item{shp}{A shape file.}
 
-\item{res}{A resolution vector of the null raster in geographical degrees}
+\item{res}{Resolution in geographical degrees.}
 }
 \value{
-a data frame of null points
+A matrix of null raster points.
 }
 \description{
-Create a point matrix from from a shape file with an arbitrary resolution
+Deprecated. Use \code{\link{make_null_raster_points}} instead.
 }
 \examples{
+\dontrun{
 null_raster_point(shp = mexico, res = 1)
+}
 }

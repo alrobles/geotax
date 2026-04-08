@@ -33,6 +33,7 @@ prepare_taxonomic_tree <- function(tax_table, power = 1) {
 
   tax_table  <- dplyr::select(tax_table, dplyr::all_of(sortNames))
   tax_table  <- dplyr::distinct(tax_table)
+  tax_table  <- as.data.frame(lapply(tax_table, as.factor))
   rankNames  <- colnames(tax_table)
 
   formulaNames <- paste("~",

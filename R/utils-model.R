@@ -1,15 +1,15 @@
 # Internal model building helpers - not exported
 
 .build_glm_dataframe <- function(incidence, phydist) {
-  if (nrow(incidence) == 1) {
-    hosts_by_parasite <- list(names(incidence[, apply(incidence, 2, function(x) x == 1), drop = FALSE]))
-    names(hosts_by_parasite) <- rownames(incidence)
-  } else {
-    hosts_by_parasite <- lapply(
-      apply(apply(incidence, 2, function(x) x == 1), 1, which),
-      names
-    )
+  bool_mat <- apply(incidence, 2, function(x) x == 1)
+  if (!is.matrix(bool_mat)) {
+    bool_mat <- matrix(bool_mat, nrow = 1,
+                       dimnames = list(rownames(incidence), colnames(incidence)))
   }
+  hosts_by_parasite <- lapply(seq_len(nrow(bool_mat)), function(i) {
+    names(which(bool_mat[i, ]))
+  })
+  names(hosts_by_parasite) <- rownames(bool_mat)
   # Remove parasites with no hosts
   hosts_by_parasite <- hosts_by_parasite[sapply(hosts_by_parasite, length) > 0]
   if (length(hosts_by_parasite) == 0) {

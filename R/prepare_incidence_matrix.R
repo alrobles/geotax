@@ -70,10 +70,13 @@ prepare_incidence_matrix <- function(db, return = c("matrix", "tibble")) {
 align_geotax_inputs <- function(incidence, phydist) {
   .validate_incidence(incidence)
   .validate_phydist(phydist)
-  .check_incidence_phydist_alignment(incidence, phydist)
 
-  common_cols       <- intersect(colnames(phydist), colnames(incidence))
+  common_cols <- intersect(colnames(phydist), colnames(incidence))
+  if (length(common_cols) == 0) {
+    stop("No shared column names between 'incidence' and 'phydist'.")
+  }
   incidence_aligned <- incidence[, common_cols, drop = FALSE]
+  phydist_aligned   <- phydist[common_cols, common_cols]
 
-  list(incidence = incidence_aligned, phydist = phydist)
+  list(incidence = incidence_aligned, phydist = phydist_aligned)
 }

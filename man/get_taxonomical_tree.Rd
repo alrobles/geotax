@@ -7,27 +7,18 @@
 get_taxonomical_tree(tax_table, power = 1)
 }
 \arguments{
-\item{tax_table}{A data frame (or tibble) with taxonomic information.}
+\item{tax_table}{A data frame with taxonomic information.}
 
-\item{power}{The power at which heights must be raised according to
-Grafen's (1989) computation of branch lengths.
-Use taxonomic hierarchy (class, order, family genus, species) as columns.
-Default is 1 to get distances as integer numbers.}
+\item{power}{Numeric; power for branch length computation. Default is 1.}
 }
 \value{
-A cladogram (tree) from taxonomic table
+A cladogram (phylo object).
 }
 \description{
-Internally use the as.phylo.formula from the ape R package. Internally parse
-the name of the taxonomical hierarchy to a formula. Works with a table
-which columns are the taxonomic hierarchy from left to right.
-}
-\details{
-Use the same algorithm in compute.brlen from ape package
+Deprecated. Use \code{\link{prepare_taxonomic_tree}} instead.
 }
 \examples{
+\dontrun{
 get_taxonomical_tree(tax_table)
 }
-\references{
-\url{https://search.r-project.org/CRAN/refmans/ape/html/compute.brlen.html}
 }

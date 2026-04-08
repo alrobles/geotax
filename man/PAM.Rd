@@ -7,19 +7,20 @@
 PAM(shp, points, res)
 }
 \arguments{
-\item{shp}{A shape file}
+\item{shp}{A shape file.}
 
-\item{points}{Data frame with sp long lat}
+\item{points}{Data frame with sp long lat (3 columns).}
 
-\item{res}{A resolution vector of the null raster in geographical degrees}
+\item{res}{Resolution in geographical degrees.}
 }
 \value{
-A tibble fill with ones and zeros, column names of species and
-rows of sites with coordinates
+A tibble PAM.
 }
 \description{
-Create a Presence Absence Matrix
+Deprecated. Use \code{\link{build_presence_absence_matrix}} instead.
 }
 \examples{
+\dontrun{
 PAM(shp = mexico, points = host_points_mexico, res = 3)
+}
 }

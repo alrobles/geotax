@@ -8,7 +8,9 @@
 #' @return A cladogram (phylo object).
 #' @export
 #' @examples
+#' \dontrun{
 #' get_taxonomical_tree(tax_table)
+#' }
 get_taxonomical_tree <- function(tax_table, power = 1) {
   .Deprecated("prepare_taxonomic_tree")
   prepare_taxonomic_tree(tax_table = tax_table, power = power)

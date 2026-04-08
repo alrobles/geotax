@@ -8,7 +8,9 @@
 #' @return A vector of probabilities.
 #' @export
 #' @examples
+#' \dontrun{
 #' prob_logit(c(1, -0.5), seq(0, 10, 1))
+#' }
 prob_logit <- function(coef, dist) {
   .Deprecated("predict_geotax_probability")
   predict_geotax_probability(coef = coef, dist = dist)

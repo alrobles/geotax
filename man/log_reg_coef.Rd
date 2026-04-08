@@ -2,26 +2,25 @@
 % Please edit documentation in R/log_reg_coef.R
 \name{log_reg_coef}
 \alias{log_reg_coef}
-\title{Logistic regression coeficients. Calculates the coefficients of a logistic
-regression. Use an incidence matrix of pest - host interaction and a
-phylogenetical distance matrix of host.}
+\title{Logistic regression coefficients}
 \usage{
 log_reg_coef(incidence, phydist)
 }
 \arguments{
-\item{incidence}{Incidence binary matrix between pest - host interaction}
+\item{incidence}{Incidence binary matrix.}
 
-\item{phydist}{Phylogenetic host distance matrix}
+\item{phydist}{Phylogenetic distance matrix.}
+}
+\value{
+A data.frame of logistic regression coefficients.
 }
 \description{
-Logistic regression coeficients. Calculates the coefficients of a logistic
-regression. Use an incidence matrix of pest - host interaction and a
-phylogenetical distance matrix of host.
+Deprecated. Use \code{\link{fit_geotax_model}} instead.
 }
 \examples{
-incidence_matrix <-  get_incidence_matrix(db = beetleTreeInteractions)
+\dontrun{
+incidence_matrix <- get_incidence_matrix(beetleTreeInteractions)
 incidence_matrix <- incidence_matrix[, colnames(phy_dist)]
 log_reg_coef(incidence_matrix, phy_dist)
-
-
+}
 }

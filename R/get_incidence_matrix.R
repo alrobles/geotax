@@ -8,7 +8,9 @@
 #' @return An incidence matrix or tibble.
 #' @export
 #' @examples
+#' \dontrun{
 #' get_incidence_matrix(beetleTreeInteractions)
+#' }
 get_incidence_matrix <- function(db, returnDataFrame = FALSE) {
   .Deprecated("prepare_incidence_matrix")
   ret <- if (returnDataFrame) "tibble" else "matrix"

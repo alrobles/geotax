@@ -8,9 +8,11 @@
 #' @return A data.frame of logistic regression coefficients.
 #' @export
 #' @examples
+#' \dontrun{
 #' incidence_matrix <- get_incidence_matrix(beetleTreeInteractions)
 #' incidence_matrix <- incidence_matrix[, colnames(phy_dist)]
 #' get_log_reg_coefficients(incidence_matrix, phy_dist)
+#' }
 get_log_reg_coefficients <- function(incidence, phydist) {
   .Deprecated("fit_geotax_model")
   model <- fit_geotax_model(incidence = incidence, phydist = phydist)

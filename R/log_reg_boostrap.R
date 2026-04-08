@@ -10,9 +10,11 @@
 #' @importFrom stats median
 #' @export
 #' @examples
+#' \dontrun{
 #' incidence_matrix <- get_incidence_matrix(beetleTreeInteractions)
 #' incidence_matrix <- incidence_matrix[, colnames(phy_dist)]
 #' log_reg_boostrap(incidence_matrix, phy_dist, 10)
+#' }
 log_reg_boostrap <- function(incidence, phydist, n) {
   .Deprecated("bootstrap_geotax_model")
   result <- bootstrap_geotax_model(incidence = incidence, phydist = phydist, n = n, seed = NULL)

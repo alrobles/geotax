@@ -15,7 +15,9 @@
 #' @importFrom tidyr spread
 #' @export
 #' @examples
+#' \dontrun{
 #' PAM(shp = mexico, points = host_points_mexico, res = 3)
+#' }
 PAM <- function(shp, points, res) {
   .Deprecated("build_presence_absence_matrix")
   build_presence_absence_matrix(shp = shp, points = points, res = res)

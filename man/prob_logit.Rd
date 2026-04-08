@@ -2,33 +2,23 @@
 % Please edit documentation in R/prob_logit.R
 \name{prob_logit}
 \alias{prob_logit}
-\title{Get probabilities from logistic regression coefficients.}
+\title{Predict probabilities from logistic regression coefficients}
 \usage{
 prob_logit(coef, dist)
 }
 \arguments{
-\item{coef}{A vector of two elements of coefficients (Intercept and slope)
-in a logistic regression.#'}
+\item{coef}{A vector of two elements (intercept and slope).}
 
-\item{dist}{A vector of distance to perform de regression}
+\item{dist}{A numeric vector of distances.}
 }
 \value{
-A vector of probabilities given the vector of regression
+A vector of probabilities.
 }
 \description{
-After a logistic model fit a logit function with the
-coefficients of the regression to get the probabilities given a distance
-vector. Usually the distance vector is used to plot the logistic model
-as a curve from 0 to the maximum value of a distribution matrix used
-to perform de logistic regression model.
+Deprecated. Use \code{\link{predict_geotax_probability}} instead.
 }
 \examples{
-phy_dist <- ape::cophenetic.phylo(host_tree)
-phy_dist <- log10(phy_dist + 1)
-incidence_matrix <-  get_incidence_matrix(beetleTreeInteractions)
-incidence_matrix <- incidence_matrix[ ,colnames(phy_dist)]
-coefficients <- log_reg_boostrap(incidence_matrix, phy_dist, 10)
-coefficientsValues <- c(coefficients[["intercept"]], coefficients[["slope"]] )
-distVector <- seq(0, max(phy_dist), 1)
-prob_logit(coefficientsValues, distVector)
+\dontrun{
+prob_logit(c(1, -0.5), seq(0, 10, 1))
+}
 }

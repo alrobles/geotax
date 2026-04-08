@@ -9,7 +9,9 @@
 #' @importFrom raster raster res crop rasterToPoints
 #' @export
 #' @examples
+#' \dontrun{
 #' null_raster_point(shp = mexico, res = 1)
+#' }
 null_raster_point <- function(shp, res) {
   .Deprecated("make_null_raster_points")
   make_null_raster_points(shp = shp, res = res)

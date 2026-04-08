@@ -2,23 +2,23 @@
 % Please edit documentation in R/null_raster_polygon.R
 \name{null_raster_polygon}
 \alias{null_raster_polygon}
-\title{Create a Spatial polygon Data Set from a shape file
-with an arbitrary resolution}
+\title{Create a Spatial Polygon Data Set from a shape file}
 \usage{
 null_raster_polygon(shp, res)
 }
 \arguments{
-\item{shp}{A shape file}
+\item{shp}{A shape file.}
 
-\item{res}{A resolution vector of the null raster in geographical degrees}
+\item{res}{Resolution in geographical degrees.}
 }
 \value{
-a null polygon
+A SpatialPolygonsDataFrame.
 }
 \description{
-Create a Spatial polygon Data Set from a shape file
-with an arbitrary resolution
+Deprecated. Use \code{\link{make_null_raster_polygons}} instead.
 }
 \examples{
+\dontrun{
 null_raster_polygon(shp = mexico, res = 1)
+}
 }

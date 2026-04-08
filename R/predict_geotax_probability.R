@@ -19,8 +19,10 @@
 #' @export
 #'
 #' @examples
-#' model <- fit_geotax_model(incidence, phy_dist, seed = 42)
-#' dist_vec <- seq(0, max(phy_dist), length.out = 50)
+#' inc <- prepare_incidence_matrix(beetleTreeInteractions)
+#' al  <- align_geotax_inputs(inc, phy_dist)
+#' model <- fit_geotax_model(al$incidence, al$phydist, seed = 42)
+#' dist_vec <- seq(0, max(al$phydist), length.out = 50)
 #' predict_geotax_probability(model, dist_vec)
 predict_geotax_probability <- function(coef, dist) {
   if (inherits(coef, "geotax_model")) {
@@ -70,7 +72,9 @@ predict_geotax_probability <- function(coef, dist) {
 #' @export
 #'
 #' @examples
-#' model <- fit_geotax_model(incidence, phy_dist, seed = 42)
+#' inc <- prepare_incidence_matrix(beetleTreeInteractions)
+#' al  <- align_geotax_inputs(inc, phy_dist)
+#' model <- fit_geotax_model(al$incidence, al$phydist, seed = 42)
 #' extract_geotax_coefficients(model)
 extract_geotax_coefficients <- function(model) {
   if (inherits(model, "geotax_model")) {
