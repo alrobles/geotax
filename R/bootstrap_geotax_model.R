@@ -31,6 +31,7 @@
 #' bootstrap_geotax_model(aligned$incidence, aligned$phydist, n = 5, seed = 42)
 bootstrap_geotax_model <- function(incidence, phydist, n = 1000, seed = NULL) {
   .validate_geotax_inputs(incidence, phydist)
+  n <- as.integer(n)
 
   if (!is.null(seed)) set.seed(seed)
 
@@ -41,7 +42,13 @@ bootstrap_geotax_model <- function(incidence, phydist, n = 1000, seed = NULL) {
     unlist(ct)
   }, simplify = TRUE))
 
-  raw_mat <- apply(raw, 2, as.numeric)
+  # Ensure raw is always a matrix (replicate with n=1 may return a vector)
+  if (!is.matrix(raw)) {
+    raw <- matrix(raw, nrow = 1L, dimnames = list(NULL, names(raw)))
+  }
+
+  # matrix() ensures shape is always n x 12, even when apply() collapses dims
+  raw_mat <- matrix(apply(raw, 2, as.numeric), nrow = nrow(raw), dimnames = dimnames(raw))
   means   <- as.data.frame(t(colMeans(raw_mat, na.rm = TRUE)))
 
   structure(
