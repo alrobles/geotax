@@ -30,9 +30,7 @@
 #' aligned   <- align_geotax_inputs(incidence, phy_dist)
 #' bootstrap_geotax_model(aligned$incidence, aligned$phydist, n = 5, seed = 42)
 bootstrap_geotax_model <- function(incidence, phydist, n = 1000, seed = NULL) {
-  .validate_incidence(incidence)
-  .validate_phydist(phydist)
-  .check_incidence_phydist_alignment(incidence, phydist)
+  .validate_geotax_inputs(incidence, phydist)
 
   if (!is.null(seed)) set.seed(seed)
 
