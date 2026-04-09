@@ -47,11 +47,8 @@ bootstrap_geotax_model <- function(incidence, phydist, n = 1000, seed = NULL) {
     raw <- matrix(raw, nrow = 1L, dimnames = list(NULL, names(raw)))
   }
 
-  raw_mat <- apply(raw, 2, as.numeric)
-  if (!is.matrix(raw_mat)) {
-    raw_mat <- matrix(raw_mat, nrow = n, ncol = length(raw_mat) / n,
-                      dimnames = dimnames(raw))
-  }
+  # matrix() ensures shape is always n x 12, even when apply() collapses dims
+  raw_mat <- matrix(apply(raw, 2, as.numeric), nrow = nrow(raw), dimnames = dimnames(raw))
   means   <- as.data.frame(t(colMeans(raw_mat, na.rm = TRUE)))
 
   structure(

@@ -134,11 +134,11 @@ test_that("print.geotax_bootstrap produces output", {
 })
 
 test_that("predict_geotax_probability rejects bad coef", {
-  expect_error(predict_geotax_probability("not_numeric", c(0, 1)), "numeric")
+  expect_error(predict_geotax_probability("not_numeric", c(0, 1)), "'coef' must be a numeric vector")
 })
 
 test_that("predict_geotax_probability rejects non-numeric dist", {
-  expect_error(predict_geotax_probability(c(1.0, -0.5), "bad"), "numeric")
+  expect_error(predict_geotax_probability(c(1.0, -0.5), "bad"), "'dist' must be a numeric vector")
 })
 
 test_that("extract_geotax_coefficients rejects unsupported object", {
