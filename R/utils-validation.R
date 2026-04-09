@@ -13,6 +13,10 @@
   if (nrow(unique(tax_table)) < 2) {
     stop("'tax_table' must have at least 2 unique rows.")
   }
+  matched_cols <- colnames(tax_table)[colnames(tax_table) %in% fullNames]
+  if (length(matched_cols) > 0 && any(is.na(tax_table[matched_cols]))) {
+    stop("'tax_table' must not contain NA values in taxonomic rank columns.")
+  }
   invisible(NULL)
 }
 
@@ -22,6 +26,16 @@
   }
   if (is.null(rownames(incidence)) || is.null(colnames(incidence))) {
     stop("'incidence' must have both rownames and colnames.")
+  }
+  dup_rows <- duplicated(rownames(incidence))
+  if (any(dup_rows)) {
+    stop(paste0("'incidence' must not have duplicate rownames: ",
+                paste(unique(rownames(incidence)[dup_rows]), collapse = ", ")))
+  }
+  dup_cols <- duplicated(colnames(incidence))
+  if (any(dup_cols)) {
+    stop(paste0("'incidence' must not have duplicate colnames: ",
+                paste(unique(colnames(incidence)[dup_cols]), collapse = ", ")))
   }
   vals <- as.numeric(as.matrix(incidence))
   if (!all(vals %in% c(0, 1, NA))) {
@@ -46,8 +60,15 @@
   if (!is.numeric(phydist)) {
     stop("'phydist' must be numeric.")
   }
+  if (anyNA(phydist)) {
+    stop("'phydist' must not contain NA values.")
+  }
   if (!all(diag(phydist) == 0)) {
     stop("'phydist' diagonal should be 0.")
+  }
+  off_diag <- phydist[row(phydist) != col(phydist)]
+  if (any(off_diag < 0)) {
+    stop("'phydist' off-diagonal values must be non-negative.")
   }
   invisible(NULL)
 }
@@ -57,8 +78,14 @@
     stop("'shp' must be provided.")
   }
   if (!is.null(points)) {
+    if (!is.data.frame(points) && !is.matrix(points)) {
+      stop("'points' must be a data.frame or matrix.")
+    }
     if (ncol(points) != 3) {
       stop("'points' must have exactly 3 columns (species, longitude, latitude).")
+    }
+    if (anyNA(points[, 2]) || anyNA(points[, 3])) {
+      stop("'points' must not contain NA values in coordinate columns.")
     }
   }
   if (!is.null(res)) {
@@ -77,5 +104,14 @@
     stop(paste0("The following incidence columns are not in phydist: ",
                 paste(missing, collapse = ", ")))
   }
+  invisible(NULL)
+}
+
+# Combined validator for incidence + phydist inputs used by modeling functions.
+# Validates each input individually and then checks alignment between them.
+.validate_geotax_inputs <- function(incidence, phydist) {
+  .validate_incidence(incidence)
+  .validate_phydist(phydist)
+  .check_incidence_phydist_alignment(incidence, phydist)
   invisible(NULL)
 }
