@@ -30,7 +30,6 @@ An S3 object of class \code{"geotax_bootstrap"}, a list with:
 \description{
 Runs the geotax logistic regression \code{n} times using random focal host
 sampling, returning a distribution of coefficient estimates.
-This is the v2 replacement for \code{log_reg_boostrap()}.
 }
 \examples{
 incidence <- prepare_incidence_matrix(beetleTreeInteractions)
@@ -38,6 +37,5 @@ aligned   <- align_geotax_inputs(incidence, phy_dist)
 bootstrap_geotax_model(aligned$incidence, aligned$phydist, n = 5, seed = 42)
 }
 \seealso{
-\code{\link{log_reg_boostrap}} (deprecated),
-  \code{\link{fit_geotax_model}}, \code{\link{predict_geotax_probability}}
+\code{\link{fit_geotax_model}}, \code{\link{predict_geotax_probability}}
 }

@@ -1,8 +1,7 @@
 #' Fit a geotax logistic regression model
 #'
 #' Fits a logistic regression model relating host susceptibility to phylogenetic
-#' distance. This is the v2 replacement for \code{get_log_reg_coefficients()} and
-#' \code{log_reg_coef()}.
+#' distance.
 #'
 #' @param incidence A binary incidence matrix (rows = parasites/pathogens,
 #'   cols = hosts).
@@ -23,8 +22,7 @@
 #'   \item{metadata}{List with \code{n_parasites}, \code{n_hosts}, and \code{seed}.}
 #' }
 #'
-#' @seealso \code{\link{get_log_reg_coefficients}} (deprecated),
-#'   \code{\link{bootstrap_geotax_model}}, \code{\link{predict_geotax_probability}}
+#' @seealso \code{\link{bootstrap_geotax_model}}, \code{\link{predict_geotax_probability}}
 #'
 #' @export
 #'

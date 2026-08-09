@@ -111,6 +111,25 @@ legend("topright", legend = c("Caligus (generalist)",
        col = c("#1b9e77", "#d95f02"), lwd = 2, bty = "n")
 ```
 
+## 6. Model capacity and joint uncertainty
+
+`evaluate_geotax_model()` reports pseudo-R² and AUC (optionally with a
+parasite-grouped cross-validation, which measures the ability to predict
+the host range of unseen parasites), and
+`geotax_confidence_ellipse()` gives the joint confidence region of
+intercept and slope from the cluster bootstrap.
+
+```{r evaluate, eval = has_cofid}
+evaluate_geotax_model(pairs)
+```
+
+```{r ellipse, eval = has_cofid}
+ell <- geotax_confidence_ellipse(cmp$bootstrap)
+plot(ell, type = "l",
+     main = "95% joint confidence ellipse (cluster bootstrap)")
+points(t(attr(ell, "center")), pch = 19)
+```
+
 ## References
 
 - Robles-Fernández, Á. L. & Lira-Noriega, A. (2017). Combining

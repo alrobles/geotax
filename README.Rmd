@@ -48,8 +48,7 @@ to a fitted host-sharing model:
    between-clade slope comparison.
 
 Legacy single-focal-host functions (`fit_geotax_model()`,
-`bootstrap_geotax_model()`, and the deprecated `get_log_reg_coefficients()`
-family) are kept for backward compatibility.
+`bootstrap_geotax_model()`) are kept for backward compatibility.
 
 ## Example: taxonomic tree
 
@@ -63,7 +62,7 @@ data("tax_table")
 clean_tree <- distinct(tax_table)
 
 # clean the data
-taxonomic_tree <- geotax::get_taxonomical_tree(clean_tree, power = 1)
+taxonomic_tree <- geotax::prepare_taxonomic_tree(clean_tree, power = 1)
 plot(taxonomic_tree, type = "radial", show.tip.label = FALSE)
 ape::cophenetic.phylo(taxonomic_tree)[1:5, 1:5]
 ```

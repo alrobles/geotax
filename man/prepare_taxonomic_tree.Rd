@@ -18,7 +18,7 @@ A phylo object (cladogram) derived from the taxonomic table.
 }
 \description{
 Creates a phylogenetic tree from a taxonomic table using taxonomic ranks
-as a hierarchy. This is the v2 replacement for \code{get_taxonomical_tree()}.
+as a hierarchy.
 }
 \details{
 Uses the same algorithm as \code{\link[ape]{compute.brlen}} from the
@@ -29,7 +29,4 @@ prepare_taxonomic_tree(tax_table)
 }
 \references{
 \url{https://search.r-project.org/CRAN/refmans/ape/html/compute.brlen.html}
-}
-\seealso{
-\code{\link{get_taxonomical_tree}} (deprecated)
 }

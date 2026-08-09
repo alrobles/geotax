@@ -19,12 +19,8 @@ A tibble with rows representing raster cells (with x/y coordinates)
 }
 \description{
 Creates a presence-absence matrix (PAM) overlaying species occurrence points
-onto a raster grid derived from a shape file. This is the v2 replacement
-for \code{PAM()}.
+onto a raster grid derived from a shape file.
 }
 \examples{
 build_presence_absence_matrix(shp = mexico, points = host_points_mexico, res = 3)
-}
-\seealso{
-\code{\link{PAM}} (deprecated)
 }

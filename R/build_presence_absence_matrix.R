@@ -1,8 +1,7 @@
 #' Build a presence-absence matrix from species occurrence points
 #'
 #' Creates a presence-absence matrix (PAM) overlaying species occurrence points
-#' onto a raster grid derived from a shape file. This is the v2 replacement
-#' for \code{PAM()}.
+#' onto a raster grid derived from a shape file.
 #'
 #' @param shp A spatial object (shape file / SpatialPolygonsDataFrame).
 #' @param points A data.frame with 3 columns: species name, longitude, latitude.
@@ -11,7 +10,6 @@
 #' @return A tibble with rows representing raster cells (with x/y coordinates)
 #'   and columns for each species, filled with 0/1.
 #'
-#' @seealso \code{\link{PAM}} (deprecated)
 #'
 #' @importFrom sp SpatialPointsDataFrame
 #' @importFrom raster raster extract as.data.frame ncell values

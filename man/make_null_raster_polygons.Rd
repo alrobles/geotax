@@ -16,11 +16,8 @@ A SpatialPolygonsDataFrame of null raster polygons.
 }
 \description{
 Creates a spatial polygon data set from a shape file at an arbitrary
-resolution. This is the v2 replacement for \code{null_raster_polygon()}.
+resolution.
 }
 \examples{
 make_null_raster_polygons(shp = mexico, res = 1)
-}
-\seealso{
-\code{\link{null_raster_polygon}} (deprecated)
 }
