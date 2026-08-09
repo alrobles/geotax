@@ -1,7 +1,7 @@
 Package: geotax
 Type: Package
 Title: Tools for exploring taxonomic distance over the geographical space
-Version: 1.4.0
+Version: 1.5.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
@@ -15,13 +15,15 @@ RoxygenNote: 7.3.1
 Imports: 
     ape,
     dplyr,
+    graphics,
     magrittr,
     raster,
     rlang,
     sp,
     stats,
     tibble,
-    tidyr
+    tidyr,
+    utils
 Suggests:
     cofid,
     knitr,
