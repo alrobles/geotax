@@ -1,7 +1,7 @@
 Package: geotax
 Type: Package
 Title: Tools for exploring taxonomic distance over the geographical space
-Version: 1.5.0
+Version: 1.6.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
@@ -28,7 +28,8 @@ Suggests:
     cofid,
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    xplus
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
