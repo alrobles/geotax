@@ -107,6 +107,26 @@
   invisible(NULL)
 }
 
+.validate_pairs <- function(pairs) {
+  if (!inherits(pairs, "data.frame")) {
+    stop("'pairs' must be a data.frame (see prepare_pair_data()).")
+  }
+  needed <- c("parasite", "focal", "target", "phydist", "suscept")
+  missing <- setdiff(needed, colnames(pairs))
+  if (length(missing) > 0) {
+    stop(paste0("'pairs' is missing required column(s): ",
+                paste(missing, collapse = ", "),
+                ". Build it with prepare_pair_data()."))
+  }
+  if (nrow(pairs) == 0) {
+    stop("'pairs' must have at least one row.")
+  }
+  if (!all(pairs$suscept %in% c(0, 1))) {
+    stop("'pairs$suscept' must be binary (0/1).")
+  }
+  invisible(NULL)
+}
+
 # Combined validator for incidence + phydist inputs used by modeling functions.
 # Validates each input individually and then checks alignment between them.
 .validate_geotax_inputs <- function(incidence, phydist) {

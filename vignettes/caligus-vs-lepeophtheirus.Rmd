@@ -1,0 +1,125 @@
+---
+title: "Comparing clades: Caligus vs Lepeophtheirus sea lice on marine fishes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing clades: Caligus vs Lepeophtheirus sea lice on marine fishes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+has_cofid <- requireNamespace("cofid", quietly = TRUE)
+```
+
+This vignette shows the full geotax v2 workflow on a real host-parasite
+system: sea lice (Copepoda: Caligidae) parasitizing marine fishes. We ask
+whether the probability that two fish species share a sea louse decays
+faster with host phylogenetic distance in *Lepeophtheirus* than in
+*Caligus* — i.e., whether *Lepeophtheirus* is a phylogenetic specialist
+and *Caligus* a generalist.
+
+Interaction records come from the
+[cofid](https://github.com/alrobles/cofid) package (copepod-fish
+interaction database) and the host phylogeny from the
+[Fish Tree of Life](https://fishtreeoflife.org/) (Rabosky et al. 2018),
+pruned to the recorded hosts and shipped as the `fish_tree` data object.
+
+```{r setup, eval = has_cofid}
+library(geotax)
+library(ape)
+```
+
+## 1. Interaction data
+
+We keep one record per copepod species / fish species pair and derive
+the copepod genus, which is the clade-level grouping we want to compare.
+
+```{r data, eval = has_cofid}
+interactions <- cofid::cofid
+interactions$genus <- sub(" .*", "", interactions$source_taxon_name)
+interactions <- interactions[
+  interactions$genus %in% c("Caligus", "Lepeophtheirus"),
+  c("source_taxon_name", "target_taxon_name", "genus")
+]
+table(unique(interactions[, c("source_taxon_name", "genus")])$genus)
+```
+
+## 2. Host phylogenetic distances
+
+`fish_tree` is already pruned to the recorded hosts present in the Fish
+Tree of Life; its cophenetic matrix gives the phylogenetic distance
+between every pair of hosts.
+
+```{r phydist, eval = has_cofid}
+data(fish_tree)
+phydist <- cophenetic(fish_tree)
+dim(phydist)
+```
+
+## 3. Pairwise host-sharing data
+
+`prepare_pair_data()` expands the interaction table into all
+(focal host, target host) pairs per parasite. Every known host is used
+as a focal host — unlike the legacy workflow, which sampled a single
+focal host per parasite — so the data set is deterministic and uses all
+available information.
+
+```{r pairs, eval = has_cofid}
+pairs <- prepare_pair_data(interactions, phydist, group = "genus")
+nrow(pairs)
+head(pairs)
+```
+
+## 4. Comparing slopes between clades
+
+`compare_geotax_slopes()` fits a single logistic regression with a
+genus-by-distance interaction and quantifies uncertainty with a
+parasite-level cluster bootstrap, which respects the non-independence
+of pairs that share a parasite.
+
+```{r compare, eval = has_cofid}
+cmp <- compare_geotax_slopes(pairs, n_boot = 20, seed = 42)
+cmp
+```
+
+A more negative slope means the probability of sharing a parasite
+decays faster with phylogenetic distance. The *Lepeophtheirus* slope is
+steeper than the *Caligus* slope and the interaction term is negative,
+supporting the interpretation of *Lepeophtheirus* as a phylogenetic
+specialist and *Caligus* as a generalist.
+
+## 5. Predicted sharing curves
+
+```{r curves, eval = has_cofid}
+cf <- coef(cmp$fitted_model)
+d <- seq(0, max(pairs$phydist), length.out = 200)
+p_cal <- plogis(cf["(Intercept)"] + cf["phydist"] * d)
+p_lep <- plogis(cf["(Intercept)"] + cf["genusLepeophtheirus"] +
+                  (cf["phydist"] + cf["phydist:genusLepeophtheirus"]) * d)
+plot(d, p_cal, type = "l", col = "#1b9e77", lwd = 2, ylim = c(0, max(p_cal)),
+     xlab = "Host phylogenetic distance",
+     ylab = "P(sharing a sea louse)")
+lines(d, p_lep, col = "#d95f02", lwd = 2)
+legend("topright", legend = c("Caligus (generalist)",
+                              "Lepeophtheirus (specialist)"),
+       col = c("#1b9e77", "#d95f02"), lwd = 2, bty = "n")
+```
+
+## References
+
+- Robles-Fernández, Á. L. & Lira-Noriega, A. (2017). Combining
+  phylogenetic and occurrence information for risk assessment of pest
+  and pathogen interactions with host plants. *Frontiers in Applied
+  Mathematics and Statistics*, 3:17.
+  [doi:10.3389/fams.2017.00017](https://doi.org/10.3389/fams.2017.00017)
+- Rabosky, D. L. et al. (2018). An inverse latitudinal gradient in
+  speciation rate for marine fishes. *Nature*, 559, 392-395.
+- Tinoco-Domínguez, E., Amancio, G., Robles-Fernández, Á. L. &
+  Lira-Noriega, A. (2025). Interaction network of *Phoradendron* and its
+  hosts. *American Journal of Botany*, e70025.
