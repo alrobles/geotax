@@ -157,12 +157,55 @@ plot(m)
 With `gamma = 1`, `f_gamma` can be read as a phylogenetic efficiency:
 known hosts retained per unit of phylogeny predicted as suitable.
 
+In Peterson, Papes & Soberon (2008) the tolerance `E` bounds the
+omission error on the y axis, motivated by the known georeferencing /
+identification error of occurrence databases. For interaction records we
+do not know that error, so `E` is simply the omission we are willing to
+tolerate; a large value (here `E = 0.95`) uses essentially the whole
+curve, so the ratio compares the full presence-only AUC against the
+random-ranking null.
+
 ```{r partialroc, eval = has_cofid}
-roc <- phylo_partial_roc(agg$pred, agg$suscept, error_rate = 0.05,
+roc <- phylo_partial_roc(agg$pred, agg$suscept, error_rate = 0.95,
                          n_boot = 200, seed = 42)
 roc
 plot(roc)
 ```
+
+## 8. Positive-unlabeled prediction with xplus
+
+The pairwise GLM scores every candidate host through a parametric
+curve in phylogenetic distance. `fit_geotax_pu()` is a parallel,
+non-parametric route: known hosts of one parasite are the positives,
+every other tip of the phylogeny is unlabeled (not a confirmed
+absence), and an iterative PU learner (`xplus`) is trained on
+phylogenetic features (minimum and mean distance to the known hosts
+plus PCoA axes of the tree).
+
+```{r pu, eval = has_cofid && requireNamespace("xplus", quietly = TRUE)}
+pu <- fit_geotax_pu(interactions, phydist, example_parasite,
+                    seed = 42, max_iter = 30)
+pu
+m_pu <- host_threshold_metric(pu$prediction$pred, pu$prediction$is_host)
+roc_pu <- phylo_partial_roc(pu$prediction$pred, pu$prediction$is_host,
+                            error_rate = 0.95, n_boot = 200, seed = 42)
+roc_pu
+```
+
+Because the unlabeled species are not true absences, in-sample
+classification metrics overstate performance. `validate_host_prediction()`
+hides a fraction of the known hosts, refits, and measures how well the
+model ranks the hidden hosts above truly unlabeled species:
+
+```{r holdout, eval = has_cofid && requireNamespace("xplus", quietly = TRUE)}
+validate_host_prediction(interactions, phydist, example_parasite,
+                         method = "glm", n_rep = 5, seed = 42)
+validate_host_prediction(interactions, phydist, example_parasite,
+                         method = "pu", n_rep = 5, seed = 42, max_iter = 20)
+```
+
+This holdout AUC is a ranking/recovery score against unlabeled species,
+not a classical ROC against confirmed negatives.
 
 ## References
 

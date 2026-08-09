@@ -39,7 +39,8 @@ jobs:
         with:
           extra-packages: >
             any::rcmdcheck,
-            github::alrobles/cofid
+            github::alrobles/cofid,
+            github::alrobles/xplus
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
