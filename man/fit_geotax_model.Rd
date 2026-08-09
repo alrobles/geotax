@@ -31,8 +31,7 @@ An S3 object of class \code{"geotax_model"}, a list with:
 }
 \description{
 Fits a logistic regression model relating host susceptibility to phylogenetic
-distance. This is the v2 replacement for \code{get_log_reg_coefficients()} and
-\code{log_reg_coef()}.
+distance.
 }
 \examples{
 incidence <- prepare_incidence_matrix(beetleTreeInteractions)
@@ -40,6 +39,5 @@ aligned   <- align_geotax_inputs(incidence, phy_dist)
 fit_geotax_model(aligned$incidence, aligned$phydist, seed = 42)
 }
 \seealso{
-\code{\link{get_log_reg_coefficients}} (deprecated),
-  \code{\link{bootstrap_geotax_model}}, \code{\link{predict_geotax_probability}}
+\code{\link{bootstrap_geotax_model}}, \code{\link{predict_geotax_probability}}
 }

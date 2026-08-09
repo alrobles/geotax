@@ -21,8 +21,7 @@ A named numeric vector of predicted probabilities of the same length
 \description{
 Applies a logit function using intercept and slope coefficients to a vector
 of phylogenetic distances. Accepts a numeric vector, a \code{geotax_model},
-or a \code{geotax_bootstrap} object. This is the v2 replacement for
-\code{prob_logit()}.
+or a \code{geotax_bootstrap} object.
 }
 \examples{
 inc <- prepare_incidence_matrix(beetleTreeInteractions)
@@ -32,5 +31,5 @@ dist_vec <- seq(0, max(al$phydist), length.out = 50)
 predict_geotax_probability(model, dist_vec)
 }
 \seealso{
-\code{\link{prob_logit}} (deprecated), \code{\link{fit_geotax_model}}
+\code{\link{fit_geotax_model}}
 }

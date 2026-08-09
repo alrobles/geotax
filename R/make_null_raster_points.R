@@ -1,14 +1,12 @@
 #' Create null raster points from a shape file
 #'
 #' Creates a point matrix from a shape file at an arbitrary resolution.
-#' This is the v2 replacement for \code{null_raster_point()}.
 #'
 #' @param shp A spatial object (shape file).
 #' @param res Positive numeric. Raster resolution in geographical degrees.
 #'
 #' @return A matrix of null raster points.
 #'
-#' @seealso \code{\link{null_raster_point}} (deprecated)
 #'
 #' @importFrom raster raster res crop rasterToPoints
 #' @export

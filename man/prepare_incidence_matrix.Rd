@@ -18,13 +18,9 @@ An incidence matrix (rows = first column unique values, cols =
 }
 \description{
 Builds an incidence (presence/absence) matrix from a two-column data.frame
-of species interactions. This is the v2 replacement for
-\code{get_incidence_matrix()}.
+of species interactions.
 }
 \examples{
 prepare_incidence_matrix(beetleTreeInteractions)
 prepare_incidence_matrix(beetleTreeInteractions, return = "tibble")
-}
-\seealso{
-\code{\link{get_incidence_matrix}} (deprecated)
 }

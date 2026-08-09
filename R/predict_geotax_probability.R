@@ -2,8 +2,7 @@
 #'
 #' Applies a logit function using intercept and slope coefficients to a vector
 #' of phylogenetic distances. Accepts a numeric vector, a \code{geotax_model},
-#' or a \code{geotax_bootstrap} object. This is the v2 replacement for
-#' \code{prob_logit()}.
+#' or a \code{geotax_bootstrap} object.
 #'
 #' @param coef A named numeric vector with elements \code{"intercept"} and
 #'   \code{"slope"}, OR a \code{geotax_model} object, OR a \code{geotax_bootstrap}
@@ -14,7 +13,7 @@
 #' @return A named numeric vector of predicted probabilities of the same length
 #'   as \code{dist}.
 #'
-#' @seealso \code{\link{prob_logit}} (deprecated), \code{\link{fit_geotax_model}}
+#' @seealso \code{\link{fit_geotax_model}}
 #'
 #' @export
 #'

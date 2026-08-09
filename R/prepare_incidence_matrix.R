@@ -1,8 +1,7 @@
 #' Prepare an incidence matrix from an interaction table
 #'
 #' Builds an incidence (presence/absence) matrix from a two-column data.frame
-#' of species interactions. This is the v2 replacement for
-#' \code{get_incidence_matrix()}.
+#' of species interactions.
 #'
 #' @param db A data.frame with exactly two columns (e.g., host and parasite).
 #' @param return Character. Either \code{"matrix"} (default) or \code{"tibble"}.
@@ -11,7 +10,6 @@
 #'   second column unique values) filled with 0/1, or a tibble if
 #'   \code{return = "tibble"}.
 #'
-#' @seealso \code{\link{get_incidence_matrix}} (deprecated)
 #'
 #' @importFrom dplyr mutate distinct
 #' @importFrom tidyr spread

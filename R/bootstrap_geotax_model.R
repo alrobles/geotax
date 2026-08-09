@@ -2,7 +2,6 @@
 #'
 #' Runs the geotax logistic regression \code{n} times using random focal host
 #' sampling, returning a distribution of coefficient estimates.
-#' This is the v2 replacement for \code{log_reg_boostrap()}.
 #'
 #' @param incidence A binary incidence matrix (rows = parasites, cols = hosts).
 #' @param phydist A square, numeric phylogenetic distance matrix among hosts.
@@ -20,8 +19,7 @@
 #'   \item{metadata}{List with \code{n_parasites} and \code{n_hosts}.}
 #' }
 #'
-#' @seealso \code{\link{log_reg_boostrap}} (deprecated),
-#'   \code{\link{fit_geotax_model}}, \code{\link{predict_geotax_probability}}
+#' @seealso \code{\link{fit_geotax_model}}, \code{\link{predict_geotax_probability}}
 #'
 #' @export
 #'

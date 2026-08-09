@@ -1,7 +1,7 @@
 #' Prepare a taxonomic tree (cladogram) from a taxonomic table
 #'
 #' Creates a phylogenetic tree from a taxonomic table using taxonomic ranks
-#' as a hierarchy. This is the v2 replacement for \code{get_taxonomical_tree()}.
+#' as a hierarchy.
 #'
 #' @details Uses the same algorithm as \code{\link[ape]{compute.brlen}} from the
 #' ape package.
@@ -13,7 +13,6 @@
 #'
 #' @return A phylo object (cladogram) derived from the taxonomic table.
 #'
-#' @seealso \code{\link{get_taxonomical_tree}} (deprecated)
 #'
 #' @importFrom ape as.phylo.formula compute.brlen
 #' @importFrom stats as.formula

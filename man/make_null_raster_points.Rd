@@ -16,11 +16,7 @@ A matrix of null raster points.
 }
 \description{
 Creates a point matrix from a shape file at an arbitrary resolution.
-This is the v2 replacement for \code{null_raster_point()}.
 }
 \examples{
 make_null_raster_points(shp = mexico, res = 1)
-}
-\seealso{
-\code{\link{null_raster_point}} (deprecated)
 }
